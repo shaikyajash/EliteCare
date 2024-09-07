@@ -1,6 +1,6 @@
 const { sign } = require("jsonwebtoken");
 const User = require("../models/user");
-const {createToken} = require("../utils/tokenManager");
+const { createToken } = require("../utils/tokenManager");
 const { hash, compare } = require("bcryptjs");
 const { cookie } = require("express-validator");
 const path = require("path");
@@ -82,8 +82,32 @@ const handleUserLogin = async (req, res, next) => {
     return res.status(200).json({ message: "error", cause: err.message });
   }
 };
+const handleLogout = async (req, res, next) => {
+  try {
+    //user token check
+    const user = await User.findById(res.locals.jwtData.id);
+    if (!user) {
+      return res.status(401).send("User not registered OR Token malfunctioned");
+    }
+    if (user._id.toString() !== res.locals.jwtData.id) {
+      return res.status(401).send("Permissions didn't match");
+    }
+
+    res.clearCookie(process.env.COOKIE_NAME, {
+      httpOnly: true,
+      signed: true,
+    });
+
+    return res
+      .status(200)
+      .json({ message: "OK", name: user.name, email: user.email });
+  } catch (error) {
+    return res.status(200).json({ message: "ERROR", cause: error.message });
+  }
+};
 
 module.exports = {
   handleUserSignup,
   handleUserLogin,
+  handleLogout,
 };
