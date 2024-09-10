@@ -27,4 +27,15 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-module.exports = { createToken, verifyToken };
+
+const getUserDetails = (req) => {
+  const token = req.signedCookies[process.env.COOKIE_NAME];
+  if (!token) {
+    throw new Error("No token provided");
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  return decoded;
+};
+
+module.exports = { createToken, verifyToken, getUserDetails };
