@@ -13,6 +13,7 @@ const serviceRoutes = require("./routes/services.js");
 const doctorRoutes = require("./routes/doctors.js");
 const cartRoutes = require("./routes/cart.js");
 const blogRoutes = require("./routes/blog.js");
+const { checkAuth } = require("./middlewares/auth.js");
 
 const app = express();
 
@@ -21,6 +22,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(checkAuth);
 
 // Home route
 app.get("/", (req, res) => {
@@ -29,13 +31,11 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/auth", authRoutes);
-app.use('/api/appointments', appointmentRoutes);
+app.use("/api/appointments", appointmentRoutes);
 // app.use('/api/services', serviceRoutes);
 // app.use('/api/doctors', doctorRoutes);
 // app.use('/api/cart', cartRoutes);
 // app.use('/api/blog', blogRoutes);
-
-
 
 // Start the server
 
