@@ -4,7 +4,7 @@ const { handlePrompt } = require("../controller/chat");
 const router = express.Router();
 
 
-router.get("/", handlePrompt);
+router.post("/", handlePrompt);
   
 
 module.exports = router;
