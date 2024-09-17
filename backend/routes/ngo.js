@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const csv = require("csv-parser");
+const { handleDisease } = require("../controller/disease");
 
 const router = express.Router();
 
@@ -23,5 +24,8 @@ router.get("/", (req, res) => {
       res.json(transformedResults);
     });
 });
+
+router.post("/form",handleDisease);
+
 
 module.exports = router;
