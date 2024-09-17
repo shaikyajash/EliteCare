@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { Button } from "@nextui-org/button";
+
 import {
   FiMoreVertical,
   FiArrowLeft,
@@ -110,25 +110,26 @@ function Bot() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="flex flex-row items-center justify-between p-2">
-            <Pop />
-            <input
-              type="text"
-              placeholder="Enter here..."
-              value={newMessage.text}
-              onChange={(e) => setNewMessage({ text: e.target.value })}
-              className="w-full p-2 rounded mx-2 bg-[#efefef]"
-            />
-            <button
-              onClick={sendMessage}
-              className="bg-red-500 p-2 rounded-full"
-            >
-              <FiSend />
-            </button>
-          </div>
+      <div className=" border-t border-black fixed bottom-0 w-full flex items-center justify-between p-2 gap-2 bg-white">
+        <div className="flex flex-row items-center justify-between gap-2">
+          <Pop />
+          <input
+            type="text"
+            placeholder="Enter here..."
+            value={newMessage.text}
+            onChange={(e) => setNewMessage({ text: e.target.value })}
+            className="bg-[#d7d5d5] rounded-xl p-2 w-[77vw]"
+          />
         </div>
-      )}
-    </>
+        <Button
+          onClick={sendMessage}
+          isIconOnly
+          className="bg-red-500 p-2 rounded-full"
+        >
+          <FiSend />
+        </Button>
+      </div>
+    </div>
   );
 }
 
