@@ -1,5 +1,5 @@
 const express = require("express");
-const { connectToMongoDB } = require("./connect");
+const { connectDB } = require("./connect");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
@@ -40,7 +40,7 @@ app.use("/api/appointments", appointmentRoutes);
 // Start the server
 
 const PORT = process.env.PORT || 5000;
-connectToMongoDB("mongodb://127.0.0.1:27017/eliteCare")
+connectDB()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
