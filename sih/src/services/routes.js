@@ -33,13 +33,12 @@ const router = createBrowserRouter(
             element:<AnalysisPage />,
         },
         {
-<<<<<<< HEAD
             path:'/community/:group',
             element: <CommunityChat/>,
-=======
+        },
+        {
             path:'/bot',
             element: <Bot />
->>>>>>> 2636795d8a9a26a9b2d7ad4caa799faec92e50db
         },
         {
             path:'*',

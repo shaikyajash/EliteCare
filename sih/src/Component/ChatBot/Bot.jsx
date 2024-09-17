@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   FiMoreVertical,
   FiArrowLeft,
@@ -13,7 +13,7 @@ const Bubble = ({ text, time, index, image }) => {
     <div className={`flex items-center gap-2 ${alignmentClass}`}>
       <div className="flex items-start ">
         {index % 2 === 0 && (
-          <button className="m-1 p-2 bg-[#ed4d4d] rounded-xl text-sm hover:bg-slate-300"></button>
+          <button className="m-1 p-2 bg-green-500 rounded-xl text-sm hover:bg-slate-300"></button>
         )}
         <div className="bg-[#e6e6e6] p-2 m-2 rounded-xl">
           {image && <img src={image} alt="image" className="w-40" />}
@@ -69,7 +69,7 @@ function Bot() {
   const Pop = () => {
     return (
       <div>
-        <button onClick={handlePicker} className="bg-red-500 rounded-full p-2">
+        <button onClick={handlePicker} className="bg-green-500 rounded-full p-2">
           <FiPaperclip />
         </button>
       </div>
@@ -81,7 +81,7 @@ function Bot() {
       {isOpen ? (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className=" bg-red-500 h-[60px] w-[60px] rounded-full
+          className=" bg-green-500 h-[60px] w-[60px] rounded-full
           text-white flex items-center justify-center text-3xl"
         >
           <FiMessageSquare />
@@ -91,7 +91,7 @@ function Bot() {
           <div className="flex items-center justify-between border-b border-black p-2">
             <div className="flex items-center gap-2">
               <FiArrowLeft onClick={() => setIsOpen(!isOpen)} />
-              <div className="bg-red-500 rounded-full h-8 w-8"></div>
+              <div className="bg-green-500 rounded-full h-8 w-8"></div>
               <p className="text-xl">Bot</p>
             </div>
             <FiMoreVertical />
@@ -120,7 +120,7 @@ function Bot() {
             />
             <button
               onClick={sendMessage}
-              className="bg-red-500 p-2 rounded-full"
+              className="bg-green-500 p-2 rounded-full"
             >
               <FiSend />
             </button>
