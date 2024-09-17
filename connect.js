@@ -1,38 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
-mongoose.set('strictQuery', true);
-
-
-
-
-async function connectToMongoDB(url) {
+const connectDB = async () => {
   try {
-    await mongoose.connect(url);
-    console.log('MongoDB connected successfully to eliteCare database!');
+    const connect = await mongoose.connect(process.env.MONGODB_URL);
+
+    console.log(
+      `MongoDB Connected: ${connect.connection.host}  ${connect.connection.port} ${connect.connection.name} 😎`
+    );
   } catch (err) {
-    console.error('Failed to connect to MongoDB', err.message);
-    process.exit(1);
+    console.error(err);
+    throw new Error("MongoDB Connection Error");
   }
-}
-
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose is connected to MongoDB');
-});
-
-mongoose.connection.on('error', (err) => {
-  console.error('Mongoose connection error:', err);
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose is disconnected from MongoDB');
-});
-
-process.on('SIGINT', async () => {
-  await mongoose.connection.close();
-  console.log('Mongoose disconnected due to application termination');
-  process.exit(0);
-});
-
-module.exports = {
-  connectToMongoDB,
 };
+
+module.exports = { connectDB };

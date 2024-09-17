@@ -63,7 +63,7 @@ const handleUserLogin = async (req, res, next) => {
     });
 
     const token = createToken(user._id.toString(), user.email, "7d");
-    
+
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(process.env.COOKIE_NAME, token, {
