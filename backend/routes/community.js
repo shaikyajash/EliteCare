@@ -1,11 +1,11 @@
 const express = require("express");
+const { validate, postValidator } = require("../utils/validator");
+const { handlePost } = require("../controller/community");
 
 const router = express.Router();
 
 
-router.get("/", (req, res) => {
-    res.json({ msg: "Route is working", status: "T", data: null });
-  });
+router.post("/create", validate(postValidator), handlePost);
   
 
 module.exports = router;
