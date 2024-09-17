@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { Button } from "@nextui-org/button";
+
 import {
   FiMoreVertical,
   FiArrowLeft,
@@ -109,13 +109,12 @@ function Bot() {
             className="bg-[#d7d5d5] rounded-xl p-2 w-[77vw]"
           />
         </div>
-        <Button
+        <button
           onClick={sendMessage}
-          isIconOnly
           className="bg-red-500 p-2 rounded-full"
         >
           <FiSend />
-        </Button>
+        </button>
       </div>
     </div>
   );
