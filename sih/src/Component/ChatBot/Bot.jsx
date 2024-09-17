@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
+=======
+import React, { useEffect, useState, useRef } from "react";
+>>>>>>> d394e23404059ed6bf3d78bdbeb62210a5c10f22
 import {
   FiArrowLeft,
   FiMessageSquare,
@@ -13,7 +17,7 @@ const Bubble = ({ text, time, index, image }) => {
     <div className={`flex items-center gap-2 ${alignmentClass}`}>
       <div className="flex items-start ">
         {index % 2 === 0 && (
-          <button className="m-1 p-2 bg-[#ed4d4d] rounded-xl text-sm hover:bg-slate-300"></button>
+          <button className="m-1 p-2 bg-green-500 rounded-xl text-sm hover:bg-slate-300"></button>
         )}
         <div className="bg-[#e6e6e6] p-2 m-2 rounded-xl">
           {image && <img src={image} alt="image" className="w-40" />}
@@ -94,6 +98,7 @@ function Bot() {
               <div className="bg-green-500 rounded-full h-8 w-8 overflow-hidden">
                 <img src={"/images/Logo2.png"} alt="" />
               </div>
+              <div className="bg-green-500 rounded-full h-8 w-8"></div>
               <p className="text-xl">Bot</p>
             </div>
             <FiMoreVertical />

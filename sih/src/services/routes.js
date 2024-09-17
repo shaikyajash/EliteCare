@@ -6,6 +6,7 @@ import AuthenticationPage from "../Component/authenticationpage/authenticationpa
 import NGOPage from "../Component/ngopage/ngopage";
 import NotFound from '../Component/notfound/notfound';
 import AnalysisPage from "../Component/analysispage/analysispage";
+import CommunityChat from "../Component/communitychat/communitychat";
 import Bot from "../Component/ChatBot/Bot";
 
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter(
         },
         {
             path:'/communtiy',
-            element:<CommunityPage />
+            element:<CommunityPage />,
         },
         {
             path:'/authenticate',
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
         {
             path:'/analysis',
             element:<AnalysisPage />,
+        },
+        {
+            path:'/community/:group',
+            element: <CommunityChat/>,
         },
         {
             path:'/bot',
