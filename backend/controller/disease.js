@@ -2,7 +2,6 @@ async function handleDisease(req, res) {
     try {
       // Destructure disease from the request body
       const { disease } = req.body;
-        console.log(disease);
 
       if (!disease) {
         return res.status(400).json({
