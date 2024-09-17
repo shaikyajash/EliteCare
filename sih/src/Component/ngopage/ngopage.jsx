@@ -5,7 +5,9 @@ export default function NGOPage(){
     return(
         <div>
             <Navbar />
-            <h1>appointment page</h1>
+            <div className="flex w-full h-screen justify-center items-center">
+                <h1>NGOs page</h1>
+            </div>
         </div>
     )
 }

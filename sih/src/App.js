@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom";
 
 function App() {
   return (
-    <div className="felx w-full h-screen justify-center items-center">
+    <div className="w-full h-screen justify-center items-center bg-gray-100">
       <RouterProvider router={router} />
     </div>
   );

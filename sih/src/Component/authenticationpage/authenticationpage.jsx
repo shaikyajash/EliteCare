@@ -57,7 +57,7 @@ export default function AuthenticationPage() {
   };
 
   return (
-    <div className="container flex w-full h-full justify-center items-center">
+    <div className="container flex w-full h-full justify-center items-center" style={{backgroundImage: 'url("/images/backgroundLow.png")'}}>
       <div className="w-80 h-96 bg-white rounded-lg shadow-md overflow-hidden">
         <div className="bg-green-500 text-white text-3xl font-bold py-3 px-4">
           {isLoginMode ? 'Log In' : 'Sign Up'}
