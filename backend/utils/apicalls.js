@@ -32,7 +32,7 @@ async function submitQuery(sessionId, query) {
       `https://api.on-demand.io/chat/v1/sessions/${sessionId}/query`,
       {
         endpointId: "predefined-openai-gpt4o",
-        query: `Write me all of your response strictly in JSON format, example {["message":"your answer"],}${query}`,
+        query: `${query}`,
         pluginIds: [
           "plugin-1712327325",
           "plugin-1713962163",
@@ -48,9 +48,9 @@ async function submitQuery(sessionId, query) {
     );
 
     const answer = response.data.data.answer;
-    const ans = JSON.parse(answer);
+  
 
-    return ans;
+    return answer;
   } catch (error) {
     return error;
   }
