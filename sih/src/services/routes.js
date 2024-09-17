@@ -6,6 +6,7 @@ import AuthenticationPage from "../Component/authenticationpage/authenticationpa
 import NGOPage from "../Component/ngopage/ngopage";
 import NotFound from '../Component/notfound/notfound';
 import AnalysisPage from "../Component/analysispage/analysispage";
+import Bot from "../Component/ChatBot/Bot";
 
 
 const router = createBrowserRouter(
@@ -29,6 +30,10 @@ const router = createBrowserRouter(
         {
             path:'/analysis',
             element:<AnalysisPage />,
+        },
+        {
+            path:'/bot',
+            element: <Bot />
         },
         {
             path:'*',

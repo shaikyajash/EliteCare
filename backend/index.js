@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config();
-// const cors = require('cors');
+const cors = require('cors');
 
 // Importing Routes
 const authRoutes = require("./routes/auth");
@@ -16,7 +16,12 @@ const { checkAuth } = require("./middlewares/auth.js");
 const app = express();
 
 // // Middleware
-// app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(cors(
+  {
+    origin: 'http://localhost:3000',
+    credentials: true
+  }
+)); // Enable Cross-Origin Resource Sharing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -37,7 +42,7 @@ app.use("/api/llm", llmRoutes);
 
 // Start the server
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
