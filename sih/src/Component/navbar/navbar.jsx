@@ -54,12 +54,12 @@ export default function Navbar() {
       </div>
       <div className="m-2">
         <NavLink to="/authenticate">
-          <button className="border-green-500 border-2 rounded-xl w-max px-2 py-1 hover:bg-green-500 hover:text-white font-semibold">
-            LOGIN | SIGNUP
+          <button className="flex items-center justify-center border-green-500 border-2 rounded-2xl w-max px-2 py-0.5 hover:bg-green-500 hover:text-white font-semibold">
+            Login | SignUp
           </button>
         </NavLink>
       </div>
-      <div className="fixed bottom-2 right-2 ">
+      <div className="fixed bottom-2 right-2 z-50">
         <Bot />
       </div>
     </nav>

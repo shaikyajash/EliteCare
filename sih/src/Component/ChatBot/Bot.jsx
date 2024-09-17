@@ -1,10 +1,14 @@
+<<<<<<< HEAD
+import React, { useEffect, useRef, useState } from "react";
+=======
 import React, { useEffect, useState, useRef } from "react";
+>>>>>>> d394e23404059ed6bf3d78bdbeb62210a5c10f22
 import {
-  FiMoreVertical,
   FiArrowLeft,
+  FiMessageSquare,
+  FiMoreVertical,
   FiPaperclip,
   FiSend,
-  FiMessageSquare,
 } from "react-icons/fi";
 const Bubble = ({ text, time, index, image }) => {
   const alignmentClass = index % 2 === 0 ? "justify-start" : "justify-end";
@@ -91,6 +95,9 @@ function Bot() {
           <div className="flex items-center justify-between border-b border-black p-2">
             <div className="flex items-center gap-2">
               <FiArrowLeft onClick={() => setIsOpen(!isOpen)} />
+              <div className="bg-green-500 rounded-full h-8 w-8 overflow-hidden">
+                <img src={"/images/Logo2.png"} alt="" />
+              </div>
               <div className="bg-green-500 rounded-full h-8 w-8"></div>
               <p className="text-xl">Bot</p>
             </div>
