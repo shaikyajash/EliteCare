@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-
 import {
   FiMoreVertical,
   FiArrowLeft,
   FiPaperclip,
   FiSend,
+  FiMessageSquare,
 } from "react-icons/fi";
 const Bubble = ({ text, time, index, image }) => {
   const alignmentClass = index % 2 === 0 ? "justify-start" : "justify-end";
@@ -26,6 +26,7 @@ const Bubble = ({ text, time, index, image }) => {
 };
 
 function Bot() {
+  const [isOpen, setIsOpen] = useState(true);
   const [chatMessages, setChatMessages] = useState(() => {
     const savedMessages = localStorage.getItem("chatMessages");
     return savedMessages ? JSON.parse(savedMessages) : [];
@@ -76,47 +77,57 @@ function Bot() {
   };
 
   return (
-    <div className="h-screen w-[450px]">
-      <div className="flex items-center justify-between h-12 border-b border-black p-2">
-        <div className="flex items-center gap-2">
-          <FiArrowLeft />
-          <div className="bg-red-500 rounded-full h-8 w-8"></div>
-          <p className="text-xl">Bot</p>
-        </div>
-        <FiMoreVertical />
-      </div>
-      <div className="flex flex-col overflow-y-auto h-[calc(100vh-6rem)] bg-gray-100 p-4">
-        {chatMessages.map((message, index) => (
-          <Bubble
-            key={index}
-            text={message.text}
-            time={message.time}
-            image={message.image}
-            index={index}
-          />
-        ))}
-        <div ref={messagesEndRef} />
-      </div>
-
-      <div className=" border-t border-black fixed bottom-0 w-full flex items-center justify-between p-2 gap-2 bg-white">
-        <div className="flex flex-row items-center justify-between gap-2">
-          <Pop />
-          <input
-            type="text"
-            placeholder="Enter here..."
-            value={newMessage.text}
-            onChange={(e) => setNewMessage({ text: e.target.value })}
-            className="bg-[#d7d5d5] rounded-xl p-2 w-[77vw]"
-          />
-        </div>
+    <>
+      {isOpen ? (
         <button
-          onClick={sendMessage}
-          className="bg-red-500 p-2 rounded-full"
+          onClick={() => setIsOpen(!isOpen)}
+          className=" bg-red-500 h-[60px] w-[60px] rounded-full
+          text-white flex items-center justify-center text-3xl"
         >
-          <FiSend />
+          <FiMessageSquare />
         </button>
-      </div>
-    </div>
+      ) : (
+        <div className=" w-[450px] bg-white shadow-lg shadow-black rounded-xl">
+          <div className="flex items-center justify-between border-b border-black p-2">
+            <div className="flex items-center gap-2">
+              <FiArrowLeft onClick={() => setIsOpen(!isOpen)} />
+              <div className="bg-red-500 rounded-full h-8 w-8"></div>
+              <p className="text-xl">Bot</p>
+            </div>
+            <FiMoreVertical />
+          </div>
+          <div className="flex flex-col overflow-y-auto h-[calc(80vh)] bg-gray-100 p-4">
+            {chatMessages.map((message, index) => (
+              <Bubble
+                key={index}
+                text={message.text}
+                time={message.time}
+                image={message.image}
+                index={index}
+              />
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div className="flex flex-row items-center justify-between p-2">
+            <Pop />
+            <input
+              type="text"
+              placeholder="Enter here..."
+              value={newMessage.text}
+              onChange={(e) => setNewMessage({ text: e.target.value })}
+              className="w-full p-2 rounded mx-2 bg-[#efefef]"
+            />
+            <button
+              onClick={sendMessage}
+              className="bg-red-500 p-2 rounded-full"
+            >
+              <FiSend />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
