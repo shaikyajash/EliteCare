@@ -8,7 +8,7 @@ const AnalysisPage = () => {
         <Navbar />
     
       {/* Main content */}
-      <main className="flex-grow p-8">
+      <main className="flex-grow p-8 mt-16">
         <div className="max-w-3xl mx-auto">
           {/* Logo */}
           <h1 className="text-4xl font-bold text-center mb-8 text-emerald-500">
