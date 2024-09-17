@@ -32,7 +32,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/communtiy"
+              to="/community"
               className={({ isActive }) =>
                 `ml-4 font-bold ${isActive ? "text-green-500" : "text-black"}`
               }
