@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  FiMoreVertical,
   FiArrowLeft,
+  FiMessageSquare,
+  FiMoreVertical,
   FiPaperclip,
   FiSend,
-  FiMessageSquare,
 } from "react-icons/fi";
 const Bubble = ({ text, time, index, image }) => {
   const alignmentClass = index % 2 === 0 ? "justify-start" : "justify-end";
@@ -69,7 +69,7 @@ function Bot() {
   const Pop = () => {
     return (
       <div>
-        <button onClick={handlePicker} className="bg-red-500 rounded-full p-2">
+        <button onClick={handlePicker} className="bg-green-500 rounded-full p-2">
           <FiPaperclip />
         </button>
       </div>
@@ -81,7 +81,7 @@ function Bot() {
       {isOpen ? (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className=" bg-red-500 h-[60px] w-[60px] rounded-full
+          className=" bg-green-500 h-[60px] w-[60px] rounded-full
           text-white flex items-center justify-center text-3xl"
         >
           <FiMessageSquare />
@@ -91,7 +91,9 @@ function Bot() {
           <div className="flex items-center justify-between border-b border-black p-2">
             <div className="flex items-center gap-2">
               <FiArrowLeft onClick={() => setIsOpen(!isOpen)} />
-              <div className="bg-red-500 rounded-full h-8 w-8"></div>
+              <div className="bg-green-500 rounded-full h-8 w-8 overflow-hidden">
+                <img src={"/images/Logo2.png"} alt="" />
+              </div>
               <p className="text-xl">Bot</p>
             </div>
             <FiMoreVertical />
@@ -120,7 +122,7 @@ function Bot() {
             />
             <button
               onClick={sendMessage}
-              className="bg-red-500 p-2 rounded-full"
+              className="bg-green-500 p-2 rounded-full"
             >
               <FiSend />
             </button>
