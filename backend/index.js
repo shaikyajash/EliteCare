@@ -8,7 +8,9 @@ dotenv.config();
 
 // Importing Routes
 const authRoutes = require("./routes/auth");
-const chatRoutes = require("./routes/chat");
+const  ngoRoutes = require("./routes/ngo.js");
+const  communityRoutes = require("./routes/community.js");
+const llmRoutes = require("./routes/llm.js");
 const { checkAuth } = require("./middlewares/auth.js");
 
 const app = express();
@@ -27,7 +29,11 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/auth", authRoutes);
-app.use("api/chat", chatRoutes)
+app.use("/api/ngo", ngoRoutes);
+app.use("/api/community", communityRoutes);
+app.use("/api/llm", llmRoutes);
+
+
 
 // Start the server
 
