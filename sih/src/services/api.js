@@ -6,7 +6,8 @@ const endPoints = {
   LOGIN: 'auth/login',
   SIGNUP: 'auth/signup',
   GETGROUPS: 'groups/startsWith/:letter',
-  BLOGS: 'blogs/post/:category'
+  BLOGS: 'blogs/post/:category',
+  FETCHNGOBYDISEASE: 'ngo/searchNGOByDisease',
 };
 
 const axiosInstance = axios.create({
