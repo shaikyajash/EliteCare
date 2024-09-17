@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../navbar/navbar";
 import { useNavigate } from "react-router-dom";
 import Groups from "../groups/groups";
+// import axios from "axios";
 
-const MyCommunityPage = () => {
+const CommunityPage = () => {
+  const [wikipediaData, setWikipediaData] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   const featuredGroups = [
     { name: "Anxiety Disorders", category: "Mental health", icon: "👤" },
     { name: "Coronavirus (COVID-19)", category: "Infections", icon: "🦠" },
@@ -67,6 +71,27 @@ const MyCommunityPage = () => {
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+  // const handleCategoryClick = (category) => {
+  //   const trimedText = category.replace(/\s+/g, "_");
+  //   setSelectedCategory(trimedText);
+  //   const wikipediaUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${trimedText}`;
+  //   axios
+  //     .get(wikipediaUrl)
+  //     .then((response) => {
+  //       setWikipediaData(response.data.extract);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching Wikipedia data:", error);
+  //       setWikipediaData("Wikipedia article not found."); // Handle errors gracefully
+  //     });
+  // };
+
+  const handleCategoryClick = (category) => {
+    const trimmedText = category.replace(/\s+/g, "+");
+    const url = `https://en.wikipedia.org/wiki/Special:Search?go=Go&search=${trimmedText}&ns0=1`;
+    window.location.href = url;
+  };
+
   const navigate = useNavigate();
   const [showGroups, setShowGroups] = useState(false);
   const [letter, setLetter] = useState("");
@@ -76,10 +101,14 @@ const MyCommunityPage = () => {
     navigate(`/community/${trimedText}`);
   }
 
-  function handleShowGroups(letter){
+  function handleShowGroups(letter) {
     setShowGroups(true);
     setLetter(letter);
   }
+
+  useEffect(() => {
+    setWikipediaData(null);
+  }, [selectedCategory]);
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -113,12 +142,23 @@ const MyCommunityPage = () => {
             {categories.map((category, index) => (
               <div
                 key={index}
-                className="bg-white p-3 rounded-lg shadow shadow-green-500 text-sm"
+                className="bg-white p-3 rounded-lg shadow shadow-green-500 text-sm cursor-pointer"
+                onClick={() => handleCategoryClick(category)}
               >
                 {category}
               </div>
             ))}
           </div>
+          {selectedCategory && (
+            <div className="mt-4 flex flex-col border-2 border-green-500 bg-white rounded-lg p-4">
+              <p>Selected category: {selectedCategory}</p>
+              {wikipediaData ? (
+                <div dangerouslySetInnerHTML={{ __html: wikipediaData }} />
+              ) : (
+                <p>Loading Wikipedia data...</p>
+              )}
+            </div>
+          )}
         </section>
 
         <section>
@@ -128,7 +168,7 @@ const MyCommunityPage = () => {
               <button
                 key={letter}
                 className="bg-white px-3 py-1 rounded shadow  shadow-green-500"
-                onClick={()=>handleShowGroups(letter)}
+                onClick={() => handleShowGroups(letter)}
               >
                 {letter}
               </button>
@@ -141,4 +181,4 @@ const MyCommunityPage = () => {
   );
 };
 
-export default MyCommunityPage;
+export default CommunityPage;
