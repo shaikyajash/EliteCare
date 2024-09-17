@@ -29,16 +29,13 @@ const signupValidator = [
   ...loginValidator,
 ];
 
-const appointmentValidator = [
-  body("date").notEmpty().withMessage("Date is required"),
-  body("time").notEmpty().withMessage("Time is required"),
-  body("description").notEmpty().withMessage("Description is required"),
-  body("doctorName").notEmpty().withMessage("Invalid Doctor Name"),
+const chatCompletionValidator = [
+  body("message").notEmpty().withMessage("Message is required"),
 ];
 
 module.exports = {
   validate,
   loginValidator,
   signupValidator,
-  appointmentValidator,
+  chatCompletionValidator,
 };

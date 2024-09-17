@@ -37,7 +37,7 @@ const handleUserSignup = async (req, res, next) => {
     });
     return res
       .status(201)
-      .json({ message: "OK", name: user.name, email: user.email });
+      .json({ message: "OK", name: user.name, email: user.email, token: token });
   } catch (err) {
     return res.status(500).json({ error: "error", cause: err.message });
   }
@@ -63,7 +63,7 @@ const handleUserLogin = async (req, res, next) => {
     });
 
     const token = createToken(user._id.toString(), user.email, "7d");
-    
+
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(process.env.COOKIE_NAME, token, {
