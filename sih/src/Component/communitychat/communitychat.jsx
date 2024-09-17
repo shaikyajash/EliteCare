@@ -96,7 +96,7 @@ export default function CommunityChat() {
     return(
         <div className='bg-gray-100 min-h-screen w-full'>
             <Navbar />
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
                 <div className='bg-white p-4 rounded-lg shadow-green-500 shadow flex flex-col items-start'>
                     <div className='flex flex-col items-center w-full '>
                         <h1 className="text-4xl font-semibold mb-4">Community Posts</h1>
