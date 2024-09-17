@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect, useRef, useState } from "react";
-=======
 import React, { useEffect, useState, useRef } from "react";
->>>>>>> d394e23404059ed6bf3d78bdbeb62210a5c10f22
 import {
   FiArrowLeft,
   FiMessageSquare,

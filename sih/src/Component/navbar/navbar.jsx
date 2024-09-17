@@ -4,7 +4,7 @@ import Bot from "../ChatBot/Bot";
 
 export default function Navbar() {
   return (
-    <nav className="flex shadow-green-500 w-full h-16 shadow-sm bg-white items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex shadow-green-500 w-full h-16 shadow-sm bg-white items-center justify-between">
       <div className="flex items-center">
         <NavLink to="/">
           <img src="/images/logo.png" alt="/" className="w-40" />
