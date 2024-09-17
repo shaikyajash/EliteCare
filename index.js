@@ -35,7 +35,7 @@ app.use("/api/appointments", appointmentRoutes);
 // app.use('/api/services', serviceRoutes);
 // app.use('/api/doctors', doctorRoutes);
 // app.use('/api/cart', cartRoutes);
-// app.use('/api/blog', blogRoutes);
+app.use('/api/blog', blogRoutes);
 
 // Start the server
 
