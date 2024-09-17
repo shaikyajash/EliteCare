@@ -1,59 +1,38 @@
-const User = require("../models/user.js");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { createChatSession, submitQuery } = require("../utils/apicalls");
 
-const generateChatCompletion = async (req, res, next) => {
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+async function handlePrompt(req,res) {
+  const { prompt } = req.body; // Assuming createdBy is tied to req.user
+
   try {
-    const message = req.body.message;
-    const user = await User.findById(res.locals.jwtData.id);
-    if (!user) {
-      return res
-        .status(401)
-        .json({ message: "User not registered OR Token malfunctioned" });
-    }
+      
+      const id = await createChatSession(
+          "gjQtC3H6EJTT09DcQeHZfCl0Mu4HjGin",
+          "abc"
+        );
+      const response = await submitQuery(id, prompt); // Await the API response
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = "";
-    const result = await model.generateContent(prompt + message);
-    const response = await result.response;
-    const completeion = response.text();
 
-    const chats = user.chats.map(({ query, response, id }) => ({
-      query,
-      response,
-      id,
-    }));
+      res.status(201).json({
+          msg: 'Health goal created and API response saved successfully',
+          status: 'T',
+          data: response,
+          
+      });
 
-    chats.push({ query: message, response: completeion, id: new Date() });
-    user.chats.push({ query: message, response: completeion, id: new Date() });
-    // console.log(user.chats);
-
-    await user.save();
-    return res.status(200).json({ chats: user.chats });
   } catch (error) {
-    // console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
-  }
-};
+      console.error('Error creating health goal or calling API:', error.message);
 
-const sendChatsToUser = async (req, res, next) => {
-  try {
-    //user token check
-    const user = await User.findById(res.locals.jwtData.id);
-    if (!user) {
-      return res.status(401).send("User not registered OR Token malfunctioned");
-    }
-    if (user._id.toString() !== res.locals.jwtData.id) {
-      return res.status(401).send("Permissions didn't match");
-    }
-    return res.status(200).json({ message: "OK", chats: user.chats });
-  } catch (error) {
-    // console.log(error);
-    return res.status(200).json({ message: "ERROR", cause: error.message });
+      // Handle errors
+      res.status(500).json({
+          msg: 'An error occurred',
+          status: 'F',
+          data: error.message,
+      });
   }
-};
+}
 
-module.exports = {
-  generateChatCompletion,
-  sendChatsToUser,
-};
+
+module.exports={
+  handlePrompt,
+
+}

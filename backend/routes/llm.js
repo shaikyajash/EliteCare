@@ -1,11 +1,10 @@
 const express = require("express");
+const { handlePrompt } = require("../controller/chat");
 
 const router = express.Router();
 
 
-router.get("/", (req, res) => {
-    res.json({ msg: "Route is working", status: "T", data: null });
-  });
+router.get("/", handlePrompt);
   
 
 module.exports = router;
