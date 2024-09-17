@@ -1,8 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-
-
-
 // This function  takes jwt token and gives user objext in return using the secret key 
 
 function getUser(token) {

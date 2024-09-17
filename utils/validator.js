@@ -36,9 +36,20 @@ const appointmentValidator = [
   body("doctorName").notEmpty().withMessage("Invalid Doctor Name"),
 ];
 
+const blogValidator = [
+  body("title").notEmpty().withMessage("Title is required"),
+  body("content").notEmpty().withMessage("Content is required"),
+  body("contact").notEmpty().withMessage("Contact is required"),
+  body("email").notEmpty().withMessage("Email is required"),
+  body("date").notEmpty().withMessage("Date is required"),
+  body("author").notEmpty().withMessage("Author is required"),
+  
+];
+
 module.exports = {
   validate,
   loginValidator,
   signupValidator,
   appointmentValidator,
+  blogValidator,
 };
