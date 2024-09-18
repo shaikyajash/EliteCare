@@ -83,7 +83,7 @@ const AnalysisPage = () => {
           </label>
 
           {uploadedImage && (
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white rounded-lg shadow-md p-6 mt-8">
               <h2 className="text-xl font-semibold mb-4">Generated report</h2>
               {reportData ? (
                 <div>
