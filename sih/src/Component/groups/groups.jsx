@@ -7,17 +7,16 @@ export default function Groups({ letter }) {
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // function handleLoadGroups(letter){
+  // useEffect(() => {
+  //   function handleLoadGroups(letter){
   //     try{
-  //         const response = axiosInstance.get(`${endPoints.GETGROUPS}/${letter}`);
+  //         const response = axiosInstance.get(`${endPoints.GETGROUPS}${letter}`);
   //         setGroups(response.data);
   //     }catch(error){
   //         console.log(error);
   //     }
-  // }
-
-  // useEffect(() => {
-  //     handleLoadGroups(letter);
+  //   } 
+  //   handleLoadGroups(letter);
   // }, [letter]);
 
   const fakeGroups = 
@@ -103,17 +102,16 @@ export default function Groups({ letter }) {
     {"name": "Zoster Virus Survivors", "description": "Support for shingles and postherpetic neuralgia patients."}
   ]
   
-  function handleLoadGroups(letter) {
-    setTimeout(() => {
-      setIsLoading(!isLoading);
-    }, 3000);
-    const groupWithLetter = fakeGroups.filter((group) => {
-      return group.name.charAt(0).toUpperCase() === letter.toUpperCase();
-    });
-    setGroups(groupWithLetter);
-  }
-
   useEffect(() => {
+    function handleLoadGroups(letter) {
+      setTimeout(() => {
+        setIsLoading(!isLoading);
+      }, 3000);
+      const groupWithLetter = fakeGroups.filter((group) => {
+        return group.name.charAt(0).toUpperCase() === letter.toUpperCase();
+      });
+      setGroups(groupWithLetter);
+    }
     handleLoadGroups(letter);
   }, [letter]);
 
