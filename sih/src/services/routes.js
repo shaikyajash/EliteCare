@@ -23,6 +23,10 @@ const router = createBrowserRouter(
             element: <NGOPage />
         },
         {
+            path:'/ngodetails',
+            element: <Ngodetails />
+        },
+        {
             path:'/community',
             element:<CommunityPage />,
         },
