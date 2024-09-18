@@ -60,7 +60,10 @@ function Bot() {
     setChatMessages((prevMessages) => [...prevMessages, botMessage]);
   };
   const sendMessage = async () => {
-    if (newMessage.text === "") return;
+    if (newMessage.text === "") {
+      alert("Please enter a message before sending.");
+      return;
+    }
     newMessage.time = new Date().toLocaleTimeString();
     setChatMessages([...chatMessages, newMessage]);
     setNewMessage({ text: "" });
@@ -76,7 +79,6 @@ function Bot() {
       reader.readAsDataURL(file);
       reader.onload = () => {
         newMessage.image = reader.result;
-        sendMessage();
       };
     };
     input.click();
