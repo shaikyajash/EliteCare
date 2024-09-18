@@ -1,14 +1,14 @@
 import React, { useEffect, useState} from'react';
 import Navbar from '../navbar/navbar';
 import Loading from '../loading/loading';
-import { axiosInstance, endPoints } from '../../services/api';
+// import { axiosInstance, endPoints } from '../../services/api';
 import { useParams, useNavigate } from "react-router-dom";
 
 
 export default function CommunityChat() {
 
-    const {params} = useParams();
-
+    const {group} = useParams();
+    
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -76,22 +76,23 @@ export default function CommunityChat() {
             setPosts(fakePosts);
         }
         handleLoadChats();
-    },[params]);
+    },[group]);
 
     const handleOpenPost = (post) => {
-        navigate(`/community/:${params}/post/${post.topic}`,{state: {post}});
-      };
+      const trimedText = post.topic.replace(/\s+/g, "");
+      navigate(`/community/${group}/post/${trimedText}`,{state: {post}});
+    };
 
     // useEffect(()=>{
     //     function handleLoadChats(){
     //         setTimeout(()=>{
     //             setIsLoading(!isLoading);
     //         }, 3000);
-    //         const respone  = axiosInstance.get(`${endPoints.BLOGS}/${params}`);
-    //         setChats(respone.data);
+    //         const respone  = axiosInstance.get(`${endPoints.BLOGS}${params}`);
+    //         setPosts(respone.data);
     //     }
     //     handleLoadChats();
-    // }, [params]);
+    // }, [group]);
 
     return(
         <div className='bg-gray-100 min-h-screen w-full'>

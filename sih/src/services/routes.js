@@ -9,6 +9,7 @@ import AnalysisPage from "../Component/analysispage/analysispage";
 import CommunityChat from "../Component/communitychat/communitychat";
 import Bot from "../Component/ChatBot/Bot";
 import Post from "../Component/post/post";
+import Ngodetails from "../Component/ngodetails/ngodetails"
 
 
 const router = createBrowserRouter(
@@ -20,6 +21,10 @@ const router = createBrowserRouter(
         {
             path:'/ngo',
             element: <NGOPage />
+        },
+        {
+            path:'/ngodetails',
+            element: <Ngodetails />
         },
         {
             path:'/community',
@@ -36,6 +41,10 @@ const router = createBrowserRouter(
         {
             path:'/authenticate',
             element:<AuthenticationPage />
+        },
+        {
+            path:'/ngo/:ngoName',
+            element:<Ngodetails/>
         },
         {
             path:'/analysis',

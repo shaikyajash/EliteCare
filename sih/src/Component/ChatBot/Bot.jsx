@@ -6,6 +6,8 @@ import {
   FiPaperclip,
   FiSend,
 } from "react-icons/fi";
+import axios from "axios";
+
 const Bubble = ({ text, time, index, image }) => {
   const alignmentClass = index % 2 === 0 ? "justify-start" : "justify-end";
 
@@ -46,10 +48,22 @@ function Bot() {
     time: "",
     image: "",
   });
+  const handleResponse = async () => {
+    const response = await axios.post("http://localhost:5000/api/llm", {
+      prompt: newMessage.text,
+    });
+    console.log(response);
+    const botMessage = {
+      text: response.data.data,
+      time: new Date().toLocaleTimeString(),
+    };
+    setChatMessages((prevMessages) => [...prevMessages, botMessage]);
+  };
   const sendMessage = async () => {
     newMessage.time = new Date().toLocaleTimeString();
     setChatMessages([...chatMessages, newMessage]);
     setNewMessage({ text: "" });
+    await handleResponse(newMessage);
   };
 
   const handlePicker = () => {
@@ -69,7 +83,10 @@ function Bot() {
   const Pop = () => {
     return (
       <div>
-        <button onClick={handlePicker} className="bg-green-500 rounded-full p-2">
+        <button
+          onClick={handlePicker}
+          className="bg-green-500 rounded-full p-2"
+        >
           <FiPaperclip />
         </button>
       </div>
@@ -94,7 +111,6 @@ function Bot() {
               <div className="bg-green-500 rounded-full h-8 w-8 overflow-hidden">
                 <img src={"/images/Logo2.png"} alt="" />
               </div>
-              <div className="bg-green-500 rounded-full h-8 w-8"></div>
               <p className="text-xl">Bot</p>
             </div>
             <FiMoreVertical />
