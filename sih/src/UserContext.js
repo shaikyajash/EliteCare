@@ -46,9 +46,9 @@ const UserProvider = ({ children }) => {
 }
 
 // Custom hook to use user context
-export function useUser() {
+function useUser() {
   return useContext(UserContext);
 }
 
 // Ensure these lines do not conflict
-export { UserProvider }; // Only export UserProvider here
+export { UserProvider, useUser }; // Only export UserProvider here
