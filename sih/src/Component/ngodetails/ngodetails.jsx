@@ -8,7 +8,7 @@ export default function Ngodetails() {
             <Navbar />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
                 <div className="bg-white p-4 rounded-lg shadow-green-500 shadow flex flex-row items-center justify-center">
-
+                    
                 </div>
             </div>
         </div>
