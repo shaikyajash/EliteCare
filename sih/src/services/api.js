@@ -6,7 +6,7 @@ const endPoints = {
   LOGIN: 'auth/login',
   SIGNUP: 'auth/signup',
   GETGROUPS: 'community/startsWith/',
-  BLOGS: 'blogs/post/',
+  BLOGS: 'community/post/',
   FETCHNGOBYDISEASE: 'ngo/searchNGOByDisease',
   ANALYSIS: 'analysis/',
   CONTACTNGO: 'ngo/mail'
