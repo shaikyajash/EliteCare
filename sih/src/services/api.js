@@ -9,6 +9,7 @@ const endPoints = {
   BLOGS: 'blogs/post/',
   FETCHNGOBYDISEASE: 'ngo/searchNGOByDisease',
   ANALYSIS: 'analysis/',
+  CONTACTNGO: 'ngo/mail'
 };
 
 const axiosInstance = axios.create({

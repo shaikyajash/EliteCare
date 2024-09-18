@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import Navbar from "../navbar/navbar";
 import axios from "axios";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { endPoints, axiosInstance} from '../../services/api';
 
 const MedicalForm = () => {
+
+  const location = useLocation();
+  const ngo = location.state?.ngo;
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     gender: "",
     description: "",
     file: null,
+    mail: ngo.email,
   });
 
   const handleInputChange = (e) => {
@@ -28,8 +36,11 @@ const MedicalForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-
-    const res = axios.post("http://localhost:5000/api/ngo/mail", formData);
+    const response = axiosInstance.post(endPoints.CONTACTNGO, formData);
+    if(response.ok){
+      alert("Thank you for contacting us. We will get back to you soon.");
+      navigate("/ngo");
+    }
   };
 
   return (
