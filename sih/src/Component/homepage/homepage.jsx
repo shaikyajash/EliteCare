@@ -16,19 +16,19 @@ export const UserTestimonials = () => {
   const users = [
     {
       name: 'Nat Reynolds',
-      title: 'Chief Accountant',
+      title: 'Doctor',
       imageUrl: '/images/pic1.jpg',
       testimonial: "The chatbot answered all my questions with ease, and the personalized recommendations based on my health data are super helpful. It’s like having a personal health assistant at my fingertips"
     },
     {
       name: 'Celia Almeda',
-      title: 'Secretary',
+      title: 'Engineer',
       imageUrl: '/images/pic2.jpg',
       testimonial: "The analytics provided are invaluable for our community outreach efforts. We’ve seen significant growth since we started using this service."
     },
     {
       name: 'Bob Roberts',
-      title: 'Sales Manager',
+      title: 'Artist',
       imageUrl: '/images/pic3.jpg',
       testimonial: "I appreciate the personalized support and the impact stories. They offer real insights and inspiration for improving our engagement strategies."
     }
