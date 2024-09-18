@@ -48,9 +48,8 @@ async function submitQuery(sessionId, query) {
     );
 
     const answer = response.data.data.answer;
-    const ans = JSON.parse(answer);
 
-    return ans;
+    return answer;
   } catch (error) {
     return error;
   }
