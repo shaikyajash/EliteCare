@@ -1,7 +1,13 @@
 const nodemailer = require('nodemailer');
 
 async function handleMail(req, res) {
-  try {
+
+    
+    
+    try {
+      const { description ,mail } = req.body;
+
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -12,10 +18,17 @@ async function handleMail(req, res) {
 
     // Email options
     const mailOptions = {
+
       from: process.env.fromMail , // Replace with your email
-      to: "yajash40@gmail.com", // Replace with the recipient's email
+      to: mail , // Replace with the recipient's email
       subject: "Sending Email using Node.js",
-      text: "Kaisey hooo bolooo abhi update kiya hai",
+      text: description,
+      attachments:[
+        {
+            filename:"text1.txt",
+            content:"Hello World",
+        }
+      ]
     };
 
     // Send email and await the result
