@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { endPoints, axiosInstance} from "../../services/api";
+import { endPoints, axiosInstance} from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loading/loading";
 
@@ -7,21 +7,25 @@ export default function Groups({ letter }) {
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   function handleLoadGroups(letter){
-  //     try{
-  //         const response = axiosInstance.get(`${endPoints.GETGROUPS}${letter}`);
-  //         setGroups(response.data);
-  //     }catch(error){
-  //         console.log(error);
-  //     }
-  //   } 
-  //   handleLoadGroups(letter);
-  // }, [letter]);
+  useEffect(() => {
+    async function handleLoadGroups(letter){
+      setTimeout(() => {
+        setIsLoading(!isLoading);
+      }, 3000);
+      try{
+          const response = await axiosInstance.get(`${endPoints.GETGROUPS}${letter}`);
+          const groupWithLetter = response.data.filter((group) => {
+            return group.name.charAt(0).toUpperCase() === letter.toUpperCase();
+          });
+          setGroups(groupWithLetter);
+      }catch(error){
+          console.log(error);
+      }
+    } 
+    handleLoadGroups(letter);
+  }, [letter]);
 
-  const fakeGroups = 
-
-  [
+  const fakeGroups = [
     {"name": "Arthritis Support Circle", "description": "Group for managing arthritis pain and mobility."},
     {"name": "Better Breathing Club", "description": "Supports individuals with chronic lung conditions."},
     {"name": "Cancer Warriors", "description": "Fights against cancer through support and awareness."},
@@ -102,18 +106,18 @@ export default function Groups({ letter }) {
     {"name": "Zoster Virus Survivors", "description": "Support for shingles and postherpetic neuralgia patients."}
   ]
   
-  useEffect(() => {
-    function handleLoadGroups(letter) {
-      setTimeout(() => {
-        setIsLoading(!isLoading);
-      }, 3000);
-      const groupWithLetter = fakeGroups.filter((group) => {
-        return group.name.charAt(0).toUpperCase() === letter.toUpperCase();
-      });
-      setGroups(groupWithLetter);
-    }
-    handleLoadGroups(letter);
-  }, [letter]);
+  // useEffect(() => {
+  //   function handleLoadGroups(letter) {
+  //     setTimeout(() => {
+  //       setIsLoading(!isLoading);
+  //     }, 3000);
+  //     const groupWithLetter = fakeGroups.filter((group) => {
+  //       return group.name.charAt(0).toUpperCase() === letter.toUpperCase();
+  //     });
+  //     setGroups(groupWithLetter);
+  //   }
+  //   handleLoadGroups(letter);
+  // }, [letter]);
 
   const navigate = useNavigate();
 

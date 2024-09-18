@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../navbar/navbar";
 import { useNavigate } from "react-router-dom";
 import Groups from "../groups/groups";
-// import axios from "axios";
 
 const CommunityPage = () => {
   const [wikipediaData, setWikipediaData] = useState(null);
@@ -97,8 +96,8 @@ const CommunityPage = () => {
   const [letter, setLetter] = useState("");
 
   function handleGoToGroup(group) {
-    const trimedText = group.replace(/\s+/g, "");
-    navigate(`/community/${trimedText}`);
+    const groupName = group.replace(/\s+/g, "");
+    navigate(`/community/${groupName}`);
   }
 
   function handleShowGroups(letter) {
@@ -114,7 +113,7 @@ const CommunityPage = () => {
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-14">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Featured Groups</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

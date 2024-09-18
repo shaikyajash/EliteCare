@@ -33,11 +33,12 @@ const MedicalForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    const response = axiosInstance.post(endPoints.CONTACTNGO, formData);
-    if(response.ok){
+    const response = await axiosInstance.post(endPoints.CONTACTNGO, formData);
+    console.log(response);
+    if(response.statusText === "OK"){
       alert("Thank you for contacting us. We will get back to you soon.");
       navigate("/ngo");
     }
