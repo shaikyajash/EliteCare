@@ -9,12 +9,12 @@ import {
 import axios from "axios";
 
 const Bubble = ({ text, time, index, image }) => {
-  const alignmentClass = index % 2 === 0 ? "justify-start" : "justify-end";
+  const alignmentClass = index % 2 === 0 ? "justify-end" : "justify-start";
 
   return (
     <div className={`flex items-center gap-2 ${alignmentClass}`}>
       <div className="flex items-start ">
-        {index % 2 === 0 && (
+        {index % 2 !== 0 && (
           <button className="m-1 p-2 bg-green-500 rounded-xl text-sm hover:bg-slate-300"></button>
         )}
         <div className="bg-[#e6e6e6] p-2 m-2 rounded-xl">
@@ -60,6 +60,7 @@ function Bot() {
     setChatMessages((prevMessages) => [...prevMessages, botMessage]);
   };
   const sendMessage = async () => {
+    if (newMessage.text === "") return;
     newMessage.time = new Date().toLocaleTimeString();
     setChatMessages([...chatMessages, newMessage]);
     setNewMessage({ text: "" });

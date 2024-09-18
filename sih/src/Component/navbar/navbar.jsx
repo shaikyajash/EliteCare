@@ -5,8 +5,8 @@ import { useUser } from "../../UserContext"; // Import logout from UserContext
 
 export default function Navbar() {
   const { user, logout } = useUser();
-  
-  async function handleLogout(){
+
+  async function handleLogout() {
     await logout();
   }
 
@@ -75,9 +75,11 @@ export default function Navbar() {
           </NavLink>
         </div>
       )}
-      <div className="fixed bottom-2 right-2 z-50">
-        <Bot />
-      </div>
+      {user && (
+        <div className="fixed bottom-2 right-2 z-50">
+          <Bot />
+        </div>
+      )}
     </nav>
   );
 }
