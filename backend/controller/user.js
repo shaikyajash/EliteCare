@@ -35,9 +35,11 @@ const handleUserSignup = async (req, res, next) => {
       httpOnly: true,
       signed: true,
     });
-    return res
-      .status(201)
-      .json({ message: "OK", name: user.name, email: user.email, token: token });
+    return res.status(201).json({
+      message: "OK",
+      user: { name: user.name, email: user.email, _id: user._id.toString() },
+      token: token,
+    });
   } catch (err) {
     return res.status(500).json({ error: "error", cause: err.message });
   }
@@ -74,8 +76,7 @@ const handleUserLogin = async (req, res, next) => {
 
     return res.status(200).json({
       message: "OK",
-      name: user.name,
-      email: user.email,
+      user: { name: user.name, email: user.email, _id: user._id.toString() },
       token: token,
       cookie: process.env.COOKIE_NAME,
     });

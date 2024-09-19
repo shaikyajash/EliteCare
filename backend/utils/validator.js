@@ -33,9 +33,15 @@ const chatCompletionValidator = [
   body("message").notEmpty().withMessage("Message is required"),
 ];
 
+const postValidator = [
+  body("content").notEmpty().withMessage("Content is required"),
+
+];
+
 module.exports = {
   validate,
   loginValidator,
   signupValidator,
   chatCompletionValidator,
+  postValidator,
 };
