@@ -94,7 +94,7 @@ export default function HomePage() {
       <Navbar />
       <div className="relative flex flex-col items-center">
         {/* Video Section */}
-        <div className="w-full min-h-screen flex flex-col justify-center items-center relative">
+        <div className="w-full min-h-screen flex flex-col justify-center items-center relative bg-black">
           <div 
             style={{ 
               paddingBottom: "56.25%", 
