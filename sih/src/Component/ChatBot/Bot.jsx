@@ -49,7 +49,7 @@ function Bot() {
     image: "",
   });
   const handleResponse = async () => {
-    const response = await axios.post("http://localhost:5000/api/llm", {
+    const response = await axios.post("https://elitecare.onrender.com/api/llm", {
       prompt: newMessage.text,
     });
     console.log(response);
