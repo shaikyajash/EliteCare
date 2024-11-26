@@ -22,6 +22,8 @@ app.use(cors(
     credentials: true
   }
 )); // Enable Cross-Origin Resource Sharing
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
