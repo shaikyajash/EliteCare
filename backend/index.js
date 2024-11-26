@@ -18,7 +18,8 @@ const app = express();
 // // Middleware
 const allowedOrigins = [
   "http://localhost:3000",  // Development frontend
-  "https://elite-care-bice.vercel.app"  // Production frontend
+  "https://elite-care-bice.vercel.app",
+  "https://api.on-demand.io/chat/v1/sessions",  // Production frontend
 ];
 
 app.use(
