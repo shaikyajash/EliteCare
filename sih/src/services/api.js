@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL= "https://elitecare.onrender.com/";
+const baseURL="https://elitecare.onrender.com/api";
 
 const endPoints = {
   LOGIN: 'auth/login',
