@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL=process.env.REACT_APP_URL;
+const baseURL= "https://elitecare.onrender.com/";
 
 const endPoints = {
   LOGIN: 'auth/login',
