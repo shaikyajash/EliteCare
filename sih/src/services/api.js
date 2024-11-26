@@ -14,7 +14,7 @@ const endPoints = {
 
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL ,
+  baseURL: "https://elitecare.onrender.com/api/",
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
