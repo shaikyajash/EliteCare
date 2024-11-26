@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const baseURL="https://elitecare.onrender.com/api";
 
 const endPoints = {
   LOGIN: 'auth/login',
@@ -12,12 +11,15 @@ const endPoints = {
   CONTACTNGO: 'ngo/mail'
 };
 
+
+
 const axiosInstance = axios.create({
-  baseURL,
+  baseURL: process.env.REACT_APP_BACKEND_URL ,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-export { baseURL, endPoints, axiosInstance };
+
+export { endPoints, axiosInstance };

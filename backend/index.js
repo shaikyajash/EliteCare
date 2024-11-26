@@ -16,12 +16,23 @@ const { checkAuth } = require("./middlewares/auth.js");
 const app = express();
 
 // // Middleware
-app.use(cors(
-  {
-    origin: 'https://elite-care-bice.vercel.app/',
-    credentials: true
-  }
-)); // Enable Cross-Origin Resource Sharing
+const allowedOrigins = [
+  "http://localhost:3000",  // Development frontend
+  "https://elite-care-bice.vercel.app"  // Production frontend
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies and credentials
+  })
+);
 
 
 app.use(bodyParser.json());
