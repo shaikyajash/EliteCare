@@ -161,7 +161,6 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             
             <p>&copy; {new Date().getFullYear()} EliteCare, All rights reserved.</p>
-            <p>Lovely Professional University, Jalandhar, India</p>
             <p>Email: EliteCare@email.com</p>
           </div>
         </footer>
